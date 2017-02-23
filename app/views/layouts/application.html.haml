@@ -39,21 +39,18 @@
           %ul.nav.navbar-nav
             %li= link_to "Link1", "/path1"
             %li= link_to "Link2", "/path2"
-            %li= link_to "Link3", "/path3"
+          %ul.nav.navbar-nav.navbar-right
+            - if login?
+              %li.navbar-text= current_user.name
+              %li= link_to "ログアウト", session_path, method: :delete
+            - else
+              %li= link_to "ログイン", session_path + '/new'
     .container
       .row
         .col-lg-9
           = bootstrap_flash
           = yield
         .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link1", "/path1"
-              %li= link_to "Link2", "/path2"
-              %li= link_to "Link3", "/path3"
-          / /.well
         / /span
       / /row
       %footer

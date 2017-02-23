@@ -4,7 +4,11 @@ class MemosController < ApplicationController
   # GET /memos
   # GET /memos.json
   def index
-    @memos = Memo.all
+    if login?
+      @memos = @current_user.memos
+    else
+      @memos = nil
+    end
   end
 
   # GET /memos/1
@@ -24,7 +28,7 @@ class MemosController < ApplicationController
   # POST /memos
   # POST /memos.json
   def create
-    @memo = Memo.new(memo_params)
+    @memo = current_user.memos.new(memo_params)
 
     respond_to do |format|
       if @memo.save
