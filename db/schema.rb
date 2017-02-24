@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223072257) do
+ActiveRecord::Schema.define(version: 20170224014347) do
 
   create_table "memos", force: :cascade do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170223072257) do
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.text     "rendered_body"
+    t.text     "description"
     t.index ["user_id"], name: "index_memos_on_user_id"
   end
 
