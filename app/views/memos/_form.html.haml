@@ -15,6 +15,10 @@
       = f.text_field :title, :class => 'form-control'
     = f.error_span(:title)
   .form-group
+    = f.label :tags, :class => 'control-label col-lg-2'
+    .col-lg-10
+      = text_field_tag'memo[tag_list]', '', :class => 'form-control'
+  .form-group
     = f.label :description, :class => 'control-label col-lg-2'
     .col-lg-10
       = f.text_area :description, :class => 'form-control', rows: 5
