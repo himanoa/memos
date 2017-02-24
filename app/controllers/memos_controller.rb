@@ -7,7 +7,7 @@ class MemosController < ApplicationController
     if login?
       @memos = @current_user.memos.order("created_at desc")
     else
-      @memos = Memo.all.order("created_at desc")
+      @memos = Memo.page(params[:page])
     end
   end
 
