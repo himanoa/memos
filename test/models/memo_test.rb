@@ -7,6 +7,8 @@ class MemoTest < ActiveSupport::TestCase
       ## Subtitle
 
       Contents
+
+      @h1manoa 「#ポッピンQ を見て」
     BODY
   end
 
@@ -16,5 +18,13 @@ class MemoTest < ActiveSupport::TestCase
 
   test "assert markdown rendering to" do
     assert_includes @memo.rendered_body, '<h2>Subtitle</h2>'
+  end
+
+  test "assert mention link to" do
+    assert_includes @memo.rendered_body, "<a href='https://twitter.com/h1maoa'>@h1manoa</a>"
+  end
+
+  test "assert hashtag link to" do
+    assert_includes @memo.rendered_body, "<a href='https://twitter.com/hashtag/ポッピンQ'>#ポッピンQ</a>"
   end
 end
