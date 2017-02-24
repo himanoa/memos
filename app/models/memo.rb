@@ -1,6 +1,7 @@
 require('redcarpet')
 require('gemoji')
 class Memo < ApplicationRecord
+  acts_as_taggable
   belongs_to :user
   def emojify(text)
     text.gsub(/:([\w+-]+):/) do |match|
