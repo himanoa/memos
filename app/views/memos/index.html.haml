@@ -26,4 +26,12 @@
 
   = link_to t('.new', default: t("helpers.links.new")), new_memo_path, class: 'btn btn-primary'
 - else
-  %p= 'Memosはメモを残せます'
+  - @memos.each do |memo|
+    .panel.panel-default
+      .panel-heading
+        = link_to t(memo.title), memo_path(memo)
+      .panel-body
+        %p= memo.description
+      .panel-footer
+        %p= "投稿日時: #{memo.created_at}"
+

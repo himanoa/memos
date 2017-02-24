@@ -5,9 +5,9 @@ class MemosController < ApplicationController
   # GET /memos.json
   def index
     if login?
-      @memos = @current_user.memos
+      @memos = @current_user.memos.order("created_at desc")
     else
-      @memos = nil
+      @memos = Memo.all.order("created_at desc")
     end
   end
 
