@@ -3,6 +3,7 @@ class MemosController < ApplicationController
 
   # GET /memos
   # GET /memos.json
+  # GET /memos.rss
   def index
     if login?
       @memos = @current_user.memos.order("created_at desc").page(params[:page])
